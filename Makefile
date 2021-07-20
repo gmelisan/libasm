@@ -6,14 +6,13 @@
 #    By: kemmeric <kemmeric@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/20 12:48:23 by gmelisan          #+#    #+#              #
-#    Updated: 2021/07/20 16:54:00 by gmelisan         ###   ########.fr        #
+#    Updated: 2021/07/20 17:31:39 by gmelisan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libasm.a
 
 CC = clang
-CFLAGS = -g
 
 AS = nasm
 ASFLAGS = -f macho64
