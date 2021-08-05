@@ -15,17 +15,13 @@
     section .text
 _ft_strcpy:
     mov     rax, rdi
-	mov		cl, BYTE [rsi]		 ; cl = src[0]
-    cmp     cl, 0
-    je      exit
-	xor		rdx, rdx			 ; i
+	xor		rdx, rdx			 ; i = 0
 loop:
+	mov		cl, BYTE [rsi + rdx] ; cl = src[i]
 	mov		BYTE [rax + rdx], cl ; dst[i] = src[i]
 	inc		rdx					 ; ++i
-	mov		cl, BYTE [rsi + rdx] ; cl = src[i]
 	cmp		cl, 0				 ; if src[i] != 0, continue
 	jne		loop
-	mov		BYTE [rax + rdx], 0	 ; dst[i] = 0
 exit:
     ret
 
@@ -39,5 +35,6 @@ exit:
 ;;         dst[i] = src[i];
 ;;         ++i;
 ;;     }
+;;	   dst[i] = 0
 ;;     return dst;
 ;; }

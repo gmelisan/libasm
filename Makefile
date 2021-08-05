@@ -31,7 +31,7 @@ $(NAME): $(OBJ)
 	@echo "\033[0;32mFile $@ was successfully created.\033[0m"
 
 test: main.c
-	@$(CC) $(CFLAGS) main.c -L. -lasm -o test
+	$(CC) $(CFLAGS) main.c -L. -lasm -o test
 
 %.o : %.s
 	$(AS) $(ASFLAGS) $<

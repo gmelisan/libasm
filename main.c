@@ -69,8 +69,22 @@ void	test_ft_strcpy()
 	assert(strcmp(t1_dst, t1_dst_ft) == 0);
 	printf("ok\n");
 	
-	printf(" 2 (%p, %p) ", t1_dst_ft, t1_res_ft);
+	printf("   (%p, %p) ", t1_dst_ft, t1_res_ft);
 	assert(t1_dst_ft == t1_res_ft);
+	printf("ok\n");
+	
+
+	char t2_src[] = "";
+	char t2_dst[100];
+	char t2_dst_ft[100];
+	char *t2_res = strcpy(t2_dst, t2_src);
+	char *t2_res_ft = ft_strcpy(t2_dst_ft, t2_src);
+	printf(" 2 (%s, %s) ", t2_dst, t2_dst_ft);
+	assert(strcmp(t2_dst, t2_dst_ft) == 0);
+	printf("ok\n");
+	
+	printf("   (%p, %p) ", t2_dst_ft, t2_res_ft);
+	assert(t2_dst_ft == t2_res_ft);
 	printf("ok\n");
 }
 
