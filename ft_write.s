@@ -10,11 +10,21 @@
 ;                                                                              ;
 ;******************************************************************************;
 
-	global	_ft_write
+ ;; https://stackoverflow.com/questions/48845697/macos-64-bit-system-call-table
 
-	section .text
+    global _ft_write
+    extern ___error
+
+    section .text
 _ft_write:
-	;; https://stackoverflow.com/questions/48845697/macos-64-bit-system-call-table
-	mov		rax, 0x2000004
-	syscall
-	ret
+    mov rax, 0x02000004
+    syscall
+    jc error
+    ret
+error:
+    push rax        ; save error code
+    call ___error   ; get pointer to errno
+    pop rdx
+    mov [rax], rdx  ; set errno
+    mov rax, -1
+    ret

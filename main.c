@@ -15,6 +15,7 @@
 #include <assert.h>
 #include <string.h>
 #include <unistd.h>
+#include <errno.h>
 
 extern size_t ft_strlen(const char *s);
 extern char   *ft_strcpy(char *dst, const char *src);
@@ -169,6 +170,19 @@ void	test_ft_write()
 	write(1, &t1, 6);
 	printf(" 1 ft_write('Hello\\n'):\n");
 	ft_write(1, &t1, 6);
+
+
+	ssize_t ret = write(-1, &t1, 6);
+	int e = errno;
+	errno = 0;
+	ssize_t ret_ft = ft_write(-1, &t1, 6);
+	int e_ft = errno;
+	printf(" 2 (%d, %d) ", e, e_ft);
+	assert(e == e_ft);
+	printf("ok\n");
+	printf(" 2 (%zd, %zd) ", ret, ret_ft);
+	assert(ret == ret_ft);
+	printf("ok\n");
 }
 
 void	test_ft_read()
